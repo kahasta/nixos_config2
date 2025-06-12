@@ -14,7 +14,7 @@
     ./zsh/zsh.nix
     ./waybar/waybar.nix
     ./myemacs/myemacs.nix
-    ./doomemacs/doomemacs.nix
+    # ./doomemacs/doomemacs.nix
   ];
 
   home.packages = with pkgs; [

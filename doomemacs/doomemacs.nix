@@ -1,14 +1,17 @@
-{ config, ... }:
+{ config, inputs, ... }:
 {
 
-  environment.etc."xdg/applications/emacs-doom.desktop".text = ''
-    [Desktop Entry]
-    Name=Emacs Doom
-    Exec=emacs --user-emacs-directory=/home/kahasta/doomemacs
-    Icon=emacs
-    Type=Application
-    Categories=Development;TextEditor;
-  '';
+# xdg.desktopEntries = {
+# doomEmacs = {
+#   name="Emacs doom";
+#   genericName="Emacs Doom";
+#   exec="bash -c /home/kahasta/nix-doom-emacs-unstraightened/doom_start"; 
+#   terminal=false;
+# };
 
-    environment.pathsToLink."/home/kahasta/.local/bin".source = /home/kahasta/doomemacs/bin/doom;
+programs.doom-emacs = {
+  enable = true;
+  doomDir = inputs.doom-config;
+};
+
 }
