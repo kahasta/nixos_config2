@@ -56,7 +56,7 @@
       vi = "nvim";
       vim = "nvim";
       edit = "sudo -e";
-      update = "sudo nixos-rebuild switch";
+      update = "cd ~/nixos-config/ && ./update";
     };
 
     history.size = 10000;
