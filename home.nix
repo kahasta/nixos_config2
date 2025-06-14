@@ -14,6 +14,7 @@
     ./zsh/zsh.nix
     ./waybar/waybar.nix
     ./myemacs/myemacs.nix
+    ./flutter/flutter.nix
     # ./doomemacs/doomemacs.nix
   ];
 
