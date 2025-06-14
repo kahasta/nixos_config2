@@ -16,8 +16,8 @@
   hardware.nvidia = {
     modesetting.enable = true;
     open = false;
- #   powerManagement.enable = false;
- #   powerManagement.finegrained = false;
+    #   powerManagement.enable = false;
+    #   powerManagement.finegrained = false;
     nvidiaSettings = true;
     package = config.boot.kernelPackages.nvidiaPackages.stable;
     #  package = config.hardware.nvidia.package;
@@ -75,6 +75,8 @@
     LC_TIME = "ru_RU.UTF-8";
   };
 
+  services.libinput.enable = true;
+
   # Enable the X11 windowing system.
   services.xserver = {
     enable = true;
@@ -88,13 +90,24 @@
     desktopManager = {
       budgie.enable = true;
     };
-    libinput.enable = true;
   };
 
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us,ru";
     variant = "";
+  };
+
+
+  system.userActivationScripts = {
+    stdio = {
+      text = ''
+        rm -f ~/Android/Sdk/platform-tools/adb
+        ln -s /run/current-system/sw/bin/adb ~/Android/Sdk/platform-tools/adb
+      '';
+      deps = [
+      ];
+    };
   };
 
   # Enable CUPS to print documents.
@@ -123,7 +136,7 @@
   users.users.kahasta = {
     isNormalUser = true;
     description = "kahasta";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "adbusers" ];
     packages = with pkgs; [
       #  thunderbird
     ];
@@ -131,6 +144,8 @@
 
   # Install firefox.
   programs.firefox.enable = true;
+
+  programs.adb.enable = true;
 
   programs.niri = {
     enable = true;
