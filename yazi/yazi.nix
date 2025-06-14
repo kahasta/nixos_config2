@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   home.packages = with pkgs;[
@@ -21,6 +21,15 @@
     	rm -f -- "$tmp"
     }
   '';
-  programs.yazi.enableZshIntegration = true;
-  programs.yazi.enable = true;
+  programs.yazi = {
+    enableZshIntegration = true;
+    enable = true;
+
+  };
+  xdg.configFile."yazi/yazi.toml".text = ''
+    [opener]
+    edit = [
+    	{ run = '/etc/profiles/per-user/kahasta/bin/lvim "$@"', block = true, for = "unix" },
+    ]
+  '';
 }

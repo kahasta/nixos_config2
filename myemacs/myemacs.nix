@@ -1,10 +1,12 @@
-{ config, pkgs,  ... }:
+{ config, pkgs, ... }:
 
 {
   home.packages = with pkgs; [
-  emacs	
-	jetbrains-mono
-  tabnine
+    emacs
+    jetbrains-mono
+    emacsPackages.tabnine
+    nixpkgs-fmt
+    nil
   ];
 
   # programs.emacs.enable = true;

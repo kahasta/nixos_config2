@@ -9,6 +9,7 @@
     gnutar
     gzip
     lunarvim
+    nil
   ];
 
 

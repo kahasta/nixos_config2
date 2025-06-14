@@ -37,14 +37,15 @@
     xwayland-satellite
     kitty
     python3Full
+    nixfmt-classic
   ];
 
 
   programs.home-manager.enable = true;
   programs.git = {
-  enable = true;
-  userName = "kahasta";
-  userEmail = "kahastacold@gmail.com";
+    enable = true;
+    userName = "kahasta";
+    userEmail = "kahastacold@gmail.com";
   };
   xdg.enable = true;
 
